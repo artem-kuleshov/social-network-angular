@@ -1,25 +1,28 @@
-<div class="profile-card">
-    <div class="avatar-name">
-        <img src="/assets/images/profile1.jpg" alt="avatar" class="avatar">
-        
-        <div class="name">
-            <strong class="h6">Name user</strong>
-            <span class="subtitle">username</span>
+@if (profile) {
+    <div class="profile-card">
+        <div class="avatar-name">
+            <img [src]="profile.avatarUrl | imgUrl" alt="avatar" class="avatar">
+            
+            <div class="name">
+                <strong class="h6">{{ profile.firstName }} {{ profile.lastName }}</strong>
+                <span class="subtitle">{{ profile.username }}</span>
+            </div>
+        </div>
+    
+        <div class="description">{{ profile.description }}</div>
+    
+        <div class="tags">
+            @if (profile.stack) {
+                @for (skill of profile.stack; track skill) {                    
+                    <div class="skill-tag">{{ skill }} {{ skill }}</div>
+                }
+            }
+        </div>
+    
+        <div class="action-buttons">
+            <button class="btn">Подписаться</button>
         </div>
     </div>
-
-    <div class="description">
-        Список навыков, который мы обсудили
-    </div>
-
-    <div class="tags">
-        <div class="skill-tag">Angular</div>
-        <div class="skill-tag">JavaScript</div>
-        <div class="skill-tag">Html</div>
-        <div class="skill-tag">Css</div>
-    </div>
-
-    <div class="action-buttons">
-        <button class="btn">Подписаться</button>
-    </div>
-</div>
+} @else {
+    <p>Profile data undefined</p>
+}
