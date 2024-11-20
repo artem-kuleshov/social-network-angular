@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ProfileInterface } from '../../data/interfaces/profile.interface';
+import { IProfile } from '../../data/interfaces/profile.interface';
 import { ProfileService } from '../../data/services/profile.service';
 import { ProfileCardComponent } from '../../common-ui/profile-card/profile-card.component';
 
@@ -12,7 +12,7 @@ import { ProfileCardComponent } from '../../common-ui/profile-card/profile-card.
 })
 export class SearchPageComponent {
   profileService = inject(ProfileService)
-  profiles: ProfileInterface[] = [] 
+  profiles: IProfile[] = [] 
   
   constructor() {
     this.profileService.getTestAccounts()
