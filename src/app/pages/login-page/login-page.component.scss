@@ -1,0 +1,14 @@
+:host {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100dvh;
+    align-items: center;
+    margin: 0 5cap;
+}
+
+.login-image {
+    width: 100%;
+    margin-left: 25px;
+    padding: 25px;
+    border-radius: 50px;
+}
