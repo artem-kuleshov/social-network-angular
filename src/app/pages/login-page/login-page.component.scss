@@ -12,3 +12,26 @@
     padding: 25px;
     border-radius: 50px;
 }
+
+.password-input {
+    position: relative;
+}
+
+.password-eye-btn {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #FFFFFFBF;
+    cursor: pointer;
+}
+
+.password-eye-btn.active {    
+    color: var(--primary-color);
+}
+
+.password-input svg {
+    height: 17px;
+}
