@@ -7,11 +7,12 @@ import { toObservable } from '@angular/core/rxjs-interop';
 import { AsyncPipe } from '@angular/common';
 import { SvgIconComponent } from '../../common-ui/svg-icon/svg-icon.component';
 import { ImgUrlPipe } from "../../pipes/img-url.pipe";
+import { PostFeedComponent } from "./post-feed/post-feed.component";
 
 @Component({
   selector: 'app-profile-page',
   standalone: true,
-  imports: [ProfileHeaderComponent, AsyncPipe, RouterLink, SvgIconComponent, ImgUrlPipe],
+  imports: [ProfileHeaderComponent, AsyncPipe, RouterLink, SvgIconComponent, ImgUrlPipe, PostFeedComponent],
   templateUrl: './profile-page.component.html',
   styleUrl: './profile-page.component.scss'
 })
