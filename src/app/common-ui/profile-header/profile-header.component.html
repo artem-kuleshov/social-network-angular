@@ -1,0 +1,8 @@
+@if (user(); as user) {
+    <img class="user-avatar" [src]="user.avatarUrl | imgUrl" [alt]="user.username">
+
+    <div class="user-info">
+        <h1 class="h4 mb-4">{{ user.firstName }} {{ user.lastName }}</h1>
+        <span class="reqular">{{ user.username }}</span>
+    </div>
+}

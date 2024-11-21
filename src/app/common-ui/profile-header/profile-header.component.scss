@@ -1,0 +1,15 @@
+:host {
+    display: grid;
+    grid-template-columns: 112px 1fr;
+    grid-gap: 24px;
+}
+
+.user-avatar {
+    height: 112px;
+    width: 112px;
+    border-radius: 50%;
+}
+
+.user-info {
+    text-align: left;
+}

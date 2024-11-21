@@ -27,14 +27,18 @@ export class ProfileService {
       )
   }
 
-  getSubscribersShortList() {
-    return this.http.get<IPageble<IProfile>>(`${API_URL}/account/subscribers`, {
+  getAccount(id: number) {
+    return this.http.get<IProfile>(`${API_URL}/account/${id}`)
+  }
+
+  getSubscribersShortList(subscribersCount: number = 3) {
+    return this.http.get<IPageble<IProfile>>(`${API_URL}/account/subscribers/`, {
       params: {
         page: 1
       }
     })
       .pipe(
-        map(res => res.items.slice(0, 3))
+        map(res => res.items.slice(0, subscribersCount))
       )
   }
 }
