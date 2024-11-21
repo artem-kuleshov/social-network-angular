@@ -8,7 +8,7 @@ import { API_URL } from '../app.constants';
 export class ImgUrlPipe implements PipeTransform {
 
   transform(value: string | null): string {
-    if (!value) return '';
+    if (!value) return '/assets/images/avatar-empty.webp';
     return `${API_URL}/${value}`;
   }
 

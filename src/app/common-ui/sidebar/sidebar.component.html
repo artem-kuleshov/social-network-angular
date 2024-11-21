@@ -1,1 +1,41 @@
-<p>sidebar works!</p>
+<img class="ml-16 sidebar-img mb-16" src="/assets/images/image-angular.webp" alt="logo-mini">
+
+<nav class="mb-32">
+    <ul class="main-menu-list">        
+        @for (menuItem of menuItems; track menuItem.link) {
+            <li>
+                <button class="menu-item"> 
+                    <svg [icon]="menuItem.icon" class="svg"></svg>
+                    <span>{{ menuItem.label }}</span>
+                </button>
+            </li>
+        }
+    </ul>
+</nav>
+
+
+@if (subscribers$ | async; as subscribers) {
+    
+    <p class="medium-text mb-20">Подписчики</p>
+
+    <div class="mb-32">
+        @for (subscriber of subscribers; track subscriber.id) {
+            <app-subscriber-card [profile]="subscriber"></app-subscriber-card>
+        }
+    </div>
+} 
+    
+
+<div class="mt-20 to-subscribers">
+    <a routerLink="/subscribers" class="to-subscribers-link medium-text">Все подписчики &nbsp;&nbsp; ></a>
+</div>
+
+<footer class="sidebar__footer">   
+    @if (user(); as user) {
+        <img class="sidebar__footer_img" [src]="user.avatarUrl | imgUrl" alt="">
+        <div class="medium-text username-text">{{ user.username }}</div>
+        <a routerLink="/settings" class="settings-btn">
+            <svg class="settings-btn-svg" icon="settings"></svg>
+        </a>
+    }
+</footer>
