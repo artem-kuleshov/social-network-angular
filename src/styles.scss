@@ -6,6 +6,7 @@
     --light-color: #FFFFFF;
     --primary-color: #AE7AFF;
     --dark-hover-color: #161616;
+    --light-trasparent-color: rgba(255, 255, 255, 0.75);
 }
 
 *,
@@ -91,13 +92,13 @@ body {
 
 .medium-text {
     font-family: 'JetBrainsMono-Medium', sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 560;
     line-height: 16px;
 }
 
 .regular {
-    font-style: 14px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 20px;
@@ -123,4 +124,32 @@ body {
     font-size: 14px;
     line-height: 21px;
     font-family: 'JetBrains Mono';
+}
+
+.form-label {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-label__text {
+    color: var(--light-trasparent-color);
+}
+
+.form-input {
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--light-color);
+    height: 33px;
+    color: var(--light-color);
+    padding: 12px 20px;
+
+    &:focus-visible {
+        outline: 1px solid var(--primary-color);
+    }
+}
+
+.form-textarea {
+    height: auto;
+    resize: none;
 }
