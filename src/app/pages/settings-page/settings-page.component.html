@@ -1,4 +1,4 @@
-@if (user(); as user) {
+@if (user$ | async; as user) {
     <header class="settings-page__header">
         <app-profile-header [user]="user"/>
     </header>
@@ -6,27 +6,21 @@
     <main class="settings-page__main">
         <form class="settings-form__wrapper" [formGroup]="form">
             <div class="settings-form">
-                <div class="two-columns">
-                    <label class="form-label">
-                        <span class="form-label__text regular">Имя</span>
-                        <input formControlName="firstName" class="form-input medium-text" type="text" [value]="user.firstName">
-                    </label>
-                    <label class="form-label">
-                        <span class="form-label__text regular">Фамилия</span>
-                        <input formControlName="lastName" class="form-input medium-text" type="text">
-                    </label>
+                <div class="two-columns">                    
+                    <app-input [formGroupParent]="form" controlName="firstName" labelText="Имя" />     
+                    <app-input [formGroupParent]="form" controlName="lastName" labelText="Фамилия" />
                 </div>
                 
-                <!-- <app-input formControlName="username" labelText="Telegram username" /> -->
-    
-                <label class="form-label">
-                    <span class="form-label__text regular">Telegram username</span>
-                    <input formControlName="username" class="form-input medium-text" type="text">
-                </label>
+                <app-input [formGroupParent]="form" controlName="username" labelText="Telegram username" />
     
                 <label class="form-label">
                     <span class="form-label__text regular">О себе</span>
                     <textarea formControlName="description" class="form-input medium-text form-textarea" rows="5"></textarea>
+                </label>
+
+                <label class="form-label">
+                    <span class="form-label__text regular">Аватар</span>                    
+                    <app-avatar-upload [avatarUrl]="user.avatarUrl | imgUrl" />
                 </label>
                 
                 <label class="form-label">

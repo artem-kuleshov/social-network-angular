@@ -14,8 +14,6 @@ export class ProfileService {
 
   user = signal<IProfile | null>(null)
 
-  constructor() { }
-
   getTestAccounts() {
     return this.http.get<IProfile[]>(`${API_URL}/account/test_accounts`)
   }
@@ -44,5 +42,12 @@ export class ProfileService {
 
   updateProfile(profile: Partial<IProfile>) {
     return this.http.patch<IProfile>(`${API_URL}/account/me`, profile)
+  }
+
+  uploadPhoto(file: File) {
+    const formData = new FormData()
+    formData.append('image', file)
+
+    return this.http.post<IProfile>(`${API_URL}/account/upload_image`, formData)
   }
 }

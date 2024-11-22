@@ -28,7 +28,7 @@
             <h3 class="h6 mb-16">Навыки</h3>
             <div class="skill-wrapper mb-32">
                 @if (profile.stack) {
-                    @for (skill of ['Angular', 'PHP','Angular', 'PHP','Angular', 'PHP','Angular', 'PHP','Angular', 'PHP']; track skill) {                    
+                    @for (skill of profile.stack; track skill) {                    
                         <div class="skill-tag">{{ skill }}</div>
                     }
                 }
