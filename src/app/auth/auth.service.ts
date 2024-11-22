@@ -45,7 +45,6 @@ export class AuthService {
     })
       .pipe(
         tap(res => {
-          console.log('auth service refreshAuthToken tap')
           this.saveTokens(res)
         }),
         catchError( error => {
