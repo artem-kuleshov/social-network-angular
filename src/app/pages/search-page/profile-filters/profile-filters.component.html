@@ -1,0 +1,5 @@
+<form class="search-form" [formGroup]="searchForm">           
+    <app-input [formGroupParent]="searchForm" controlName="firstName" labelText="Имя" />     
+    <app-input [formGroupParent]="searchForm" controlName="lastName" labelText="Фамилия" />
+    <app-input [formGroupParent]="searchForm" controlName="stack" labelText="Навыки" /> 
+</form>  

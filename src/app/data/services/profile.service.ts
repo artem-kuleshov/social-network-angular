@@ -13,6 +13,7 @@ export class ProfileService {
   http = inject(HttpClient)
 
   user = signal<IProfile | null>(null)
+  searchedProfiles = signal<IProfile[]>([])
 
   getTestAccounts() {
     return this.http.get<IProfile[]>(`${API_URL}/account/test_accounts`)
@@ -49,5 +50,15 @@ export class ProfileService {
     formData.append('image', file)
 
     return this.http.post<IProfile>(`${API_URL}/account/upload_image`, formData)
+  }
+
+  searchAccounts(params: Record<string, any>) {
+    return this.http.get<IPageble<IProfile>>(`${API_URL}/account/accounts`, {
+      params: params
+    }).pipe(
+      tap(res => {
+        this.searchedProfiles.set(res.items)
+      })
+    )
   }
 }
