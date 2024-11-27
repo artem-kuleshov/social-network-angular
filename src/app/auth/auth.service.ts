@@ -48,13 +48,20 @@ export class AuthService {
           this.saveTokens(res)
         }),
         catchError( error => {
-          this.logout()
+          this.removeTokensAndRedirectToLoginPage()
           return throwError(() => new Error(error))
         })
       )
   }
 
   logout() {
+    return this.http.post<ITokenResponse>(`${API_URL}/auth/logout`, {})
+      .pipe(
+        tap(res => this.removeTokensAndRedirectToLoginPage())
+      )
+  }
+
+  removeTokensAndRedirectToLoginPage() {
     this.cookieService.delete('token')
     this.cookieService.delete('refreshToken')
 

@@ -27,7 +27,6 @@ export class LoginPageComponent {
       this.authService.login(this.form.value.username!, this.form.value.password!)
         .subscribe(res => {
           this.router.navigate([''])
-          console.log(res)
         })
     }
   }

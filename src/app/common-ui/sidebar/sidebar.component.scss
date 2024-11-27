@@ -3,6 +3,7 @@
     padding: 20px 12px;
     position: relative;
     background: var(--dark-color);
+    height: 100dvh;
 }
 
 .main-menu-list {
@@ -62,7 +63,7 @@
     border-radius: 4px;
 }
 
-.sidebar__footer {
+.sidebar__footer {      
     position: absolute;
     bottom: 20px;
     width: calc(100% - 20px);
@@ -70,8 +71,8 @@
     border-radius: 2px;
     padding: 4px 16px;
     display: grid;
-    grid-template-columns: 32px 1fr 16px;
-    grid-gap: 12px;
+    grid-template-columns: 32px 1fr 16px 16px;
+    grid-gap: 10px;
     align-items: center;
 }
 

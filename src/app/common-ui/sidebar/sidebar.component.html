@@ -33,8 +33,13 @@
     @if (user(); as user) {
         <img class="sidebar__footer_img" [src]="user.avatarUrl | imgUrl" alt="">
         <div class="medium-text username-text">{{ user.username }}</div>
-        <a routerLink="/settings" class="settings-btn">
+        <a (click)="logoutModalConfirm($event)" href="javascript: void(0)" class="settings-btn" title="Выход">
+            <svg class="settings-btn-svg" icon="logout"></svg> 
+        </a>
+        <a routerLink="/settings" class="settings-btn" title="Настройки профиля">
             <svg class="settings-btn-svg" icon="settings"></svg>
         </a>
     }
 </footer>
+
+<div #modal></div>
