@@ -52,6 +52,10 @@ export class ProfileService {
     return this.http.post<IProfile>(`${API_URL}/account/upload_image`, formData)
   }
 
+  deleteAvatar() {
+    return this.http.delete<IProfile>(`${API_URL}/account/delete_image`)
+  }
+
   searchAccounts(params: Record<string, any>) {
     return this.http.get<IPageble<IProfile>>(`${API_URL}/account/accounts`, {
       params: params

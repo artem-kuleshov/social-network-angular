@@ -2,12 +2,13 @@ import { Component, effect, inject, ViewChild } from '@angular/core';
 import { ProfileService } from '../../data/services/profile.service';
 import { ProfileHeaderComponent } from "../../common-ui/profile-header/profile-header.component";
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { first, firstValueFrom } from 'rxjs';
+import { first, firstValueFrom, switchMap } from 'rxjs';
 import { InputComponent } from "../../common-ui/form-elemnts/input.component";
 import { AsyncPipe, NgIf } from '@angular/common';
 import { AvatarUploadComponent } from "./avatar-upload/avatar-upload.component";
 import { ImgUrlPipe } from '../../pipes/img-url.pipe';
 import { toObservable } from '@angular/core/rxjs-interop';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-settings-page',
@@ -18,6 +19,8 @@ import { toObservable } from '@angular/core/rxjs-interop';
 })
 export class SettingsPageComponent {
   profileService = inject(ProfileService)
+  router = inject(Router)
+
   user = this.profileService.user
   user$ = toObservable(this.profileService.user)
 
@@ -50,18 +53,22 @@ export class SettingsPageComponent {
 
     if (this.avatarUploadComponent?.avatar) {
       this.profileService.uploadPhoto(this.avatarUploadComponent.avatar)
-        .subscribe(res => {
-          // TODO Не обновляется аватар на сранице настроек
-          this.profileService.user.set(res)
+        .subscribe(res => {          
+          this.updateProfile()      
         })
+    } else {
+      this.updateProfile()      
     }
+  }
 
+  updateProfile() {
     //@ts-ignore
     this.profileService.updateProfile({
       ...this.form.value, 
       stack: this.splitStack(this.form.value.stack)
     }).subscribe(res => {
       this.profileService.user.set(res)
+      this.router.navigate([''])
     })
   }
 

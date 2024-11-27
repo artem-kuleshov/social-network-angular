@@ -8,7 +8,8 @@ import { API_URL } from '../app.constants';
 export class ImgUrlPipe implements PipeTransform {
 
   transform(value: string | null): string {
-    if (!value) return '/assets/images/noavatar.jpg';
+    if (!value) return '/assets/images/noavatar.jpg'
+    if (value.startsWith('data:image')) return value
     return `${API_URL}/${value}`;
   }
 

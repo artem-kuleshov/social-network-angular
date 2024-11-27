@@ -1,7 +1,13 @@
-<img class="avatar" [src]="preview()" alt="">
 
-<div 
-    class="dropzone" 
+<div class="avatar__wrapper">
+    @if (user()?.avatarUrl) {
+        <div #modal></div>
+        <svg class="delete-icon" icon="delete" title="Удалить аватар" (click)="createModalRemoveAvatar($event)"></svg>
+    }
+    <img class="avatar" [src]="preview() | imgUrl" alt="user avatar">
+</div>
+
+<div class="dropzone" 
     (keyup.enter)="fileDrop.click()" 
     appDragAndDrop
     (fileDropped)="onFileDropped($event)"
@@ -13,5 +19,5 @@
             Перетащите изображение или загрузите
         </span> 
     </div>
-    <input tabindex="-1" class="avatar-input" type="file" #fileDrop  (change)="fileBrowserHandler($event)">
+    <input tabindex="-1" class="avatar-input" type="file" #fileDrop (change)="fileBrowserHandler($event)">
 </div>

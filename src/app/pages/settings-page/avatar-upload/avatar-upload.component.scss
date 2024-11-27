@@ -6,6 +6,19 @@
     margin-bottom: 1px solid var(--light-color);
 }
 
+.avatar__wrapper {
+    position: relative;
+}
+
+.delete-icon {
+    position: absolute;
+    right: 4px;
+    width: 25px;
+    height: 25px; 
+    cursor: pointer;
+    color: var(--light-color);
+    z-index: 1;
+}
 .avatar {
     height: 123px;
     width: 132px;
@@ -14,6 +27,7 @@
 
 .avatar-input {
     display: none;
+    z-index: -1;
 }
 
 .dropzone {

@@ -13,7 +13,7 @@
     padding: 32px;
     border: 1px solid var(--light-color);
     background: var(--dark-color);
-    height: calc(100dvh - 160px - (24px * 4));
+    // height: calc(100dvh - 160px - (24px * 4));
 }
 
 .settings-form {
@@ -27,3 +27,6 @@
     grid-gap: 20px;
 }
 
+.div-buttons {
+    width: 300px;
+}

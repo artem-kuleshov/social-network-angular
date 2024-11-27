@@ -1,7 +1,7 @@
 import { HttpHandlerFn, HttpInterceptorFn, HttpRequest } from "@angular/common/http";
 import { inject } from "@angular/core";
 import { AuthService } from "./auth.service";
-import { BehaviorSubject, catchError, filter, finalize, switchMap, tap, throwError } from "rxjs";
+import { BehaviorSubject, catchError, filter, finalize, switchMap, throwError } from "rxjs";
 
 let isRefreshing$  = new BehaviorSubject<boolean>(false)
 
@@ -35,18 +35,15 @@ export const authTokenInterceptor: HttpInterceptorFn = (req, next) => {
 }
 
 const refreshAndProceed = (authService: AuthService, req: HttpRequest<any>, next: HttpHandlerFn) => {
-
     if (!isRefreshing$.value) {
         isRefreshing$.next(true)   
-        
+           
         return authService.refreshAuthToken()
             .pipe(
-                switchMap(res => {      
+                switchMap(res => {     
                     return next(addToken(req, res.access_token))
                 }),
-                finalize(() => {
-                    isRefreshing$.next(false)
-                })
+                finalize(() => isRefreshing$.next(false))
             )
     }    
 
