@@ -22,6 +22,7 @@ export class ProfilePageComponent {
 
   subscribers$ = this.profileService.getSubscribersShortList(5)
 
+  user = this.profileService.user
   user$ = toObservable(this.profileService.user)
 
   profile$ = this.activateRoute.params

@@ -2,10 +2,12 @@
     <header class="profile-page__header">
         <app-profile-header [user]="profile" />
         
-        <button class="btn to-settings-btn" routerLink="/settings">
-            Редактировать
-            <svg icon="settings" class="to-settings-icon"></svg>
-        </button>
+        @if (user()?.id === profile.id) {
+            <button class="btn to-settings-btn" routerLink="/settings">
+                Редактировать
+                <svg icon="settings" class="to-settings-icon"></svg>
+            </button>
+        }
     </header>
 
     <main class="profile-page__main">
